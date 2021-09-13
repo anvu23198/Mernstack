@@ -59,3 +59,22 @@ console.log("__dirname "+ __dirname)
 
 
 //save the data in json object that are making MERN stack and MEAN stack as acronym
+
+let mern = {
+    M: "Mongo DB",
+    E: "Express",
+    R: "React",
+    N: "Node"
+}
+let mean = {
+    M: "Mongo DB",
+    E: "Express",
+    A: "Angular",
+    N: "Node"
+}
+
+let writerStream1 = fsObj.createWriteStream("./Text1.json","utf8");
+
+writerStream1.write(JSON.stringify(mern));
+writerStream1.write(JSON.stringify(mean));
+writerStream1.end();
