@@ -10,7 +10,9 @@ export default class Home extends PureComponent {
 
         this.state = {
             searchParam : "I have not searched anything",
-            sessionName : "MERNStack"
+            sessionName : "MERNStack",
+            age : "",
+            address : ""
         }
 
         //ref - keyword uses
@@ -91,6 +93,18 @@ export default class Home extends PureComponent {
         this.inputAddress.current.value = name;
     }
 
+    handleSubmit = (evt)=>{
+        let age = this.inputAge.current.value;
+        let address = this.inputAddress.current.value;
+
+        this.setState({
+            age,
+            address
+        })
+
+        evt.preventDefault(); //to stop the default behaviour of form submission to server
+    }
+
     render(){
         console.log("Render Home")
         return(
@@ -122,7 +136,7 @@ export default class Home extends PureComponent {
                     {/* <img  src="/images/hm_pic4.jpg"/> */}
 
                     {/* controlled Component implementation using ref keyword */}
-                   {/* <form onSubmit={this.handleSubmit}>
+                    <form onSubmit={this.handleSubmit}>
                        <label>
                          Address:
                            <input type="text" ref={this.inputAddress} placeholder="Please enter address"/>
@@ -143,6 +157,7 @@ export default class Home extends PureComponent {
                          Age:
                          {this.state.age}
                     </label>
+                    {/*
                     <input type="text" placeholder="Please enter your name" 
                             value={this.state.name} 
                             onChange={this.changeNameOnType}/>
@@ -165,13 +180,3 @@ export default class Home extends PureComponent {
 
 
 
-//Create a component with your name (first)
-//Show all lifecycle hooks that have been discussed
-//Create another example with Pure component
-//Make that pure component child of first component
-//Pass a event/function as a prop to Child component and use it to send data back, and show update 
-//use ref keyword to access one element in first component
-
-//create navigations for your own name page
-// also move to that page on button click
-// make a route with path params in it
