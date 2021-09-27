@@ -9,6 +9,7 @@ import promise from "redux-promise-middleware";
 
 import userReducer from "./User/UserReducer";
 //import ProductReducer from "./User/UserReducer";
+import DummyReducer from './An/DummyReducer';
 
 let logger = () => (next) => (action) => {
     //currying in javasript where we pass function as input and recieve function as output
@@ -20,7 +21,8 @@ let logger = () => (next) => (action) => {
 
 export default createStore(
     combineReducers({
-        userReducer //short-hand ->  used to replace userReducer : userReducer with only - userReducer
+        userReducer, //short-hand ->  used to replace userReducer : userReducer with only - userReducer
+        DummyReducer,
     }),
     {}, //intial state for store states
     applyMiddleware(logger, thunk, promise) //middle wares tp used at various places like action.js

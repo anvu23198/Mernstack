@@ -1,5 +1,6 @@
 import React, {Fragment} from "react";
 
+import DummyComponent from "./DummyComponent"
 
 let About = (props)=>{
     let param = props.match && props.match.params ? props.match.params["id"] : "No Params"; //reading the param in path /about/:id
@@ -12,8 +13,16 @@ let About = (props)=>{
                 Let us introduce you. No matter where you are,  
                 we can help you get where you want to go in your career.  
             </p>  
+
+
             <p>id = {param}</p>
+
+            
+            <DummyComponent/>
+
         </div>
+
+        
     )
 }
 
