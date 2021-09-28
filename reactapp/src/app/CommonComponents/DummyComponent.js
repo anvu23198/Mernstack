@@ -1,67 +1,51 @@
 
 import React, { Fragment } from "react";
-import { connect } from 'react-redux';
-import { decrementCounter, incrementCounter } from '../State/An/DummyAction';
+import { useDispatch, useSelector } from 'react-redux';
+import { decrementCounter, incrementCounter, incrementBackend} from '../State/An/DummyAction';
 
-class DummyComponent extends React.PureComponent {
 
-    constructor(props) {
-        super(props);
 
-        // this.state = {
-        //     counter : -1
-        // }
 
+let DummyComponent = (props) => {
+
+    const counter = useSelector((state) => state.DummyReducer.counter)
+
+
+    const dispatch = useDispatch()
+
+    const increasedm = (evt) => {
+
+        dispatch(incrementCounter())
+
+        evt.preventDefault();
+    }
+    const decrease = (evt) => {
+
+        dispatch(decrementCounter(1))
+
+        evt.preventDefault();
     }
 
-    // increase = () => {
-    //     this.setState({
-    //         counter : this.state.counter + 1
-    //     })
+    const increaseBackEndThis =  (evt) => {
 
-    //     console.log(this.state.counter)
-    // }
+        dispatch(incrementBackend(counter))
 
-
-
-    render() {
+        evt.preventDefault();
+    }
         return (
             <div> Má may minh<br />
 
-                Counter: {this.props.counter} <br />
-                <button onClick={() => this.props.incrementCounterThis()}>Increase</button>                
-                <button onClick={() => this.props.decrementCounter(1)}>Decrease</button>                
+                Counter: {counter} <br />
+                <button onClick={increaseBackEndThis} >Increase BackEnd</button>  <br />
+                <button onClick={increasedm} >Increase</button>  <br />
+                <button onClick={decrease} >Decrease</button>                       
             </div>
 
         )
-    }
-
-
 }
 
-const mapStateToProps = (state) => {
-    console.log(`state.DummyReducer.counter: ${state.DummyReducer.counter}`);
-    return (
-        {
-            counter: state.DummyReducer.counter,
-        }
-    )
-}
 
-const mapDispatchToProps = (dispatch) => {
+export default DummyComponent;
 
-    return (
-        {
-            incrementCounterThis: () => {
-                console.log("From incrementCounterThis");
-                dispatch(incrementCounter());
-            },
-            decrementCounter: (value) => {
-                dispatch(decrementCounter(value));
-            }
-        }
-    )
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(DummyComponent);
 

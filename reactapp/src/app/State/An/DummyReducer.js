@@ -13,8 +13,11 @@ const DummyReducer = (state=INITIAL_STATE, action) => {
             console.log("Dummy Reducer invoked!");
             return newState;
 
-        case ActionTypes.DECREMENT_COUNTER:
-            return {...state, counter: state.counter - action.payload.counter};
+            case ActionTypes.DECREMENT_COUNTER:
+                return {...state, counter: state.counter - action.payload.counter};
+
+            case ActionTypes.INCREMENT_COUNTERBACKEND:
+                return {...state, counter: action.payload.counter};
 
         default: 
             return state;
