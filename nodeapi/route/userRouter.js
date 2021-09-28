@@ -28,4 +28,13 @@ router.post("/api/signinup", (req, res)=>{ //localhost:9090/user/api/signinup
     },3000)
 });
 
+router.post("/api/increment", (req, res) => {
+    let newCounter = parseInt(req.query.counter) + 1
+    console.log(newCounter)
+    
+    res.send({newCounter : newCounter})
+
+
+})
+
 module.exports = router;

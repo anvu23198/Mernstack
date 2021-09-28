@@ -5,6 +5,7 @@ const app = express(); //by invoking top level class we are initilizing the appl
 const router = require('./route/router');
 const adminRouter = require('./route/adminRouter');
 const userRouter = require('./route/userRouter');
+const productRouter = require('./route/productRouterPractice');
 
 const adminApp = express();
 
@@ -17,7 +18,15 @@ app.use('/admin', adminApp);
 adminApp.use('/', adminRouter);
 
 app.use('/user', userRouter); //redirecting all user api calls to user router
+
+
+app.use('/product', productRouter);
+
+
+
 app.use('/', router); // all the requests coming to express app are routed to router.js
+
+
 
 console.log(`we are listening on port ${port} with url http://localhost:9090`)
 app.listen(port)
