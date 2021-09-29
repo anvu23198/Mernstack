@@ -9,6 +9,9 @@ import NotFound from "./CommonComponents/NotFoundComponent";
 import UserHook from "./ApplicationComponents/Components/User/UserComponentHooks";
 import User from "./ApplicationComponents/Container/User/UserContainer";
 import Product from "./ApplicationComponents/Components/Product/ProductComponent";
+import DisplayProduct from "./ApplicationComponents/Components/Product/DisplayProduct";
+
+//yes, having an issue with mic
 
 import {BrowserRouter as Router, Redirect, Route, Switch} from "react-router-dom";
 export const myname = "Test";
@@ -53,8 +56,14 @@ export default class AppComponent extends React.Component {
                     <Route path="/" exact render={()=> (admin ? (<Redirect to="/home" />) : (<About/> ))} />
                     <Route path="/home" exact component={Home}></Route>
                     <Route path="/userhook" exact component={UserHook}></Route>
+<<<<<<< HEAD
                     <Route path="/user" exact component={User}></Route>
                     <Route path="/product" exact component={Product}></Route>
+=======
+                    {/* <Route path="/user" exact component={User}></Route> */}
+                    <Route path="/Product" exact component={Product}></Route>
+                    <Route path="/display" exact component={DisplayProduct}></Route>
+>>>>>>> cd20dfb9e83e9dd227c95b05e4158149cf078495
                     <Route path="/about" exact component={About}></Route>
                     <Route path="/about/:id" exact component={About}></Route>
 
