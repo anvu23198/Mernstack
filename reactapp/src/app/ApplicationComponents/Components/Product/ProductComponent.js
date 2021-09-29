@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 //create a functional product component using useRef
 //accepts - ProductName, Price, Rating, Comments
 //create product reducer
@@ -57,17 +58,22 @@ let Product = (props) => {
         dispatchToAddProduct(addProduct(productObj))
 =======
 import React , { useState, Fragment } from "react";
+=======
+import React , { useState, Fragment, useEffect } from "react";
+>>>>>>> 85fb02aee40e03377ca38fa9d08e4383a39c840c
 import {useSelector, useDispatch } from "react-redux";
 
 import { saveProduct} from "../../../State/Product/ProductAction";
 
 let ProductComponent = ( props ) => {
 
+    const defaultProduct = useSelector((state)=>state.prodReducer.defaultProduct)
+
     //initializes the name and returns a callback to save name on state change
-    const [name, setName] = useState("Product Name"); 
-    const [price, setPrice] = useState(0);
-    const [desc, setDescription] = useState("Product Description");
-    const [rating, setRating] = useState("Product Rating"); 
+    const [name, setName] = useState(defaultProduct.name); 
+    const [price, setPrice] = useState(defaultProduct.price);
+    const [desc, setDescription] = useState(defaultProduct.desc);
+    const [rating, setRating] = useState(defaultProduct.rating); 
     
     //const [{name, price}, updateObject] = useState({name : "Product", price :"25656"}); 
     //updateObject({name:"test", price:"2020020"})
@@ -76,7 +82,15 @@ let ProductComponent = ( props ) => {
     
     // const HandleOnChange = (evt)=>{
     //     setName(evt.target.value)
-    // }
+    // }    
+
+    //another way of initializing with reducer data
+    // useEffect(()=>{
+    //     setName(defaultProduct.name);
+    //     setDescription(defaultProduct.desc);
+    //     setPrice(defaultProduct.price);
+    //     setRating(defaultProduct.rating);
+    // })
 
     const saveProductDispatch = useDispatch();
 
@@ -90,7 +104,7 @@ let ProductComponent = ( props ) => {
 
         evt.preventDefault();
     }
-
+    console.log("Render")
     return(
         <Fragment>
 <<<<<<< HEAD
@@ -136,7 +150,7 @@ export default React.memo(Product);
                     <div className="col-md-12">
                         <b>Product Name</b>
                         <input type="text" className="form-control col-md-6" value={name} maxLength={25}
-                            placeholder="Product Name" onChange={(evt)=>setName(evt.target.value)}
+                            onChange={(evt)=>setName(evt.target.value)}
                         />
                     </div>
                     <div className="col-md-12">
