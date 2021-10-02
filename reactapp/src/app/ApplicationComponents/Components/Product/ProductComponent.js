@@ -1,17 +1,20 @@
-
+import React , { useState, Fragment, useEffect } from "react";
 import {useSelector, useDispatch } from "react-redux";
 
 import { saveProduct} from "../../../State/Product/ProductAction";
+import DisplayProduct from "./DisplayProduct";
 
 let ProductComponent = ( props ) => {
 
     const defaultProduct = useSelector((state)=>state.prodReducer.defaultProduct)
+    const user = useSelector((state) => state.userReducer.user)
 
     //initializes the name and returns a callback to save name on state change
     const [name, setName] = useState(defaultProduct.name); 
     const [price, setPrice] = useState(defaultProduct.price);
     const [desc, setDescription] = useState(defaultProduct.desc);
     const [rating, setRating] = useState(defaultProduct.rating); 
+    const [category, setCategory] = useState(defaultProduct.category); 
     
     //const [{name, price}, updateObject] = useState({name : "Product", price :"25656"}); 
     //updateObject({name:"test", price:"2020020"})
@@ -33,7 +36,7 @@ let ProductComponent = ( props ) => {
     const saveProductDispatch = useDispatch();
 
     const saveProductClick = (evt)=>{
-        let productObj = {name, price, desc, rating};
+        let productObj = {name, price, desc, rating, category};
 
         alert("We are going to save this product - "+ JSON.stringify(productObj));
 
@@ -46,6 +49,10 @@ let ProductComponent = ( props ) => {
         <Fragment>
             <h2> Products </h2>
             <section className={"componentClass"}>
+
+                {user && user.userName =="Admin" ? 
+                
+            
                 <div className="form col-md-8">
                     <div className="col-md-12">
                         <b>Product Name</b>
@@ -74,11 +81,25 @@ let ProductComponent = ( props ) => {
                           onChange={(evt)=>setRating(evt.target.value)} />
                     </div>
                     
+                    <div className="col-md-12">
+                        <b>Category </b>
+                    <input type="text" className="form-control col-md-6" value={category} 
+                          placeholder="Category"
+                          onChange={(evt)=>setCategory(evt.target.value)} />
+                    </div>
+                    
                     <input type="button" className={"form-control btn btn-primary col-md-3"} 
                         value={"Save Product"} 
                         onClick={saveProductClick}/>
                     </div>
+            
+                : ""
+                
+                }
+
+
                 <br/>
+                <DisplayProduct />
             </section>
         </Fragment>
     )

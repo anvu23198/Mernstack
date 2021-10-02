@@ -3,17 +3,18 @@ schemaObj = mongooseObj.Schema; //using the schema class from mongoose
 
 mongooseObj.connect("mongodb://127.0.0.1/mernstack7"); //creates db with name mernstack5 or opens a connection if already present
 
-let ProductSchema = new schemaObj({
-    name: {type:String, required:true},
+let CartSchema = new schemaObj({
+    name: {type:String},
     price: {type:Number},
     desc: {type:String},
     rating: {type:String},
-    category: String
+    category: String,
+    userName: String
     },
 {
     versionKey: false //false - set to false then it wont create in mongodb
 });
 
-let ProductModel = mongooseObj.model("product",ProductSchema);
-module.exports = ProductModel;
+let CartModel = mongooseObj.model("cart",CartSchema);
+module.exports = CartModel;
 //note: donot put versionkey to true or it will start throwing error

@@ -25,7 +25,7 @@ router.post("/api/signinup", (req, res)=>{ //localhost:9090/user/api/signinup
                 })
             }
         });
-    },3000)
+    },500)
 });
 
 router.post("/api/increment", (req, res) => {

@@ -11,13 +11,13 @@ let DisplayProduct = (props)=>{
     const fetchProductsDispatch = useDispatch();
 
     const productList = useSelector((state)=>state.prodReducer.products)
-
+    console.log("count s" + productList.length)
+    console.log(productList)
     //componentDidMount : by initializing the parameters as dependency
     useEffect(()=>{
         fetchProductsDispatch(fetchProducts())
     },[])
 
-    //console.log(productList);
 
     return(
         <>

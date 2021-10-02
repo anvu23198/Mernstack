@@ -7,7 +7,8 @@ let ProductSchema = new schemaObj({
     productName: {type:String, required:true},
     price: {type:String, required:true},
     rating: String,
-    comments: String
+    comments: String,
+    category: String
 },
 {
     versionKey: false 

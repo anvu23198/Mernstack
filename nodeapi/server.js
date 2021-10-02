@@ -5,6 +5,7 @@ const app = express(); //by invoking top level class we are initilizing the appl
 const router = require('./route/router');
 const adminRouter = require('./route/adminRouter');
 const userRouter = require('./route/userRouter');
+const cartRouter = require('./route/cartRouter');
 // const productRouter = require('./route/productRouterPractice');
 const productRouter = require("./route/productRouter");
 
@@ -20,7 +21,7 @@ adminApp.use('/', adminRouter);
 
 app.use('/product', productRouter);
 app.use('/user', userRouter); //redirecting all user api calls to user router
-
+app.use('/cart', cartRouter);
 
 app.use('/product', productRouter);
 
